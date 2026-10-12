@@ -18,4 +18,11 @@ public class VacunaRepository : IVacunaRepository
     {
         return await _context.VacunasGlobales.ToListAsync();
     }
+
+    public async Task<VacunaGlobal> AddAsync(VacunaGlobal vacuna) 
+    {
+        await _context.VacunasGlobales.AddAsync(vacuna);
+        await _context.SaveChangesAsync(); // Ejecuta el COMMIT en la base de datos
+        return vacuna;
+    }
 }

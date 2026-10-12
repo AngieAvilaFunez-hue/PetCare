@@ -1,6 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using PetCare.Infrastructure.Data;
+using PetCare.Application.Interfaces;
 using PetCare.Domain.Entities;
 
 namespace PetCare.API.Controllers;
@@ -9,25 +8,33 @@ namespace PetCare.API.Controllers;
 [Route("api/[controller]")]
 public class VacunasController : ControllerBase
 {
-    private readonly PetCareDbContext _context;
+    private readonly IVacunaRepository _repository;
 
-    public VacunasController(PetCareDbContext context)
+    public VacunasController(IVacunaRepository repository)
     {
-        _context = context;
+        _repository = repository;
     }
 
+    // VERBO GET: Solicitar lectura de datos (HTTP 200 OK)
     [HttpGet]
     public async Task<IActionResult> GetVacunas()
     {
-        var vacunas = await _context.VacunasGlobales.ToListAsync();
+        var vacunas = await _repository.GetAllAsync();
         return Ok(vacunas);
     }
 
+    // VERBO POST: Solicitar creación de un recurso
     [HttpPost]
-    public async Task<IActionResult> CreateVacuna([FromBody] VacunaGlobal vacuna)
+    public async Task<IActionResult> CrearVacuna([FromBody] VacunaGlobal vacuna)
     {
-        _context.VacunasGlobales.Add(vacuna);
-        await _context.SaveChangesAsync();
-        return CreatedAtAction(nameof(GetVacunas), new { id = vacuna.Id }, vacuna);
+        if (string.IsNullOrWhiteSpace(vacuna.Nombre))
+        {
+            return BadRequest("El nombre de la vacuna es obligatorio."); // HTTP 400 Bad Request
+        }
+
+        var nuevaVacuna = await _repository.AddAsync(vacuna);
+
+        // HTTP 201 Created: Devuelve el recurso recién creado por cortesía RESTful
+        return CreatedAtAction(nameof(GetVacunas), new { id = nuevaVacuna.Id }, nuevaVacuna);
     }
 }

@@ -138,3 +138,4 @@ C:\Users\Angie Avila\Desktop\PetCare\backend\PetCare.API\bin\Debug\net9.0\Swashb
 C:\Users\Angie Avila\Desktop\PetCare\backend\PetCare.API\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\Angie Avila\Desktop\PetCare\backend\PetCare.API\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerUI.dll
 C:\Users\Angie Avila\Desktop\PetCare\backend\PetCare.API\bin\Debug\net9.0\Sprache.dll
+C:\Users\Angie Avila\Desktop\PetCare\backend\PetCare.API\bin\Debug\net9.0\Scalar.AspNetCore.dll

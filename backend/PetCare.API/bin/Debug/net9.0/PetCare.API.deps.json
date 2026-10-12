@@ -12,6 +12,7 @@
           "Microsoft.EntityFrameworkCore.Design": "9.0.0",
           "Npgsql.EntityFrameworkCore.PostgreSQL": "9.0.2",
           "PetCare.Infrastructure": "1.0.0",
+          "Scalar.AspNetCore": "2.17.14",
           "Swashbuckle.AspNetCore": "7.2.0"
         },
         "runtime": {
@@ -661,6 +662,14 @@
       "runtime.ubuntu.14.04-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.2": {},
       "runtime.ubuntu.16.04-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.2": {},
       "runtime.ubuntu.16.10-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.2": {},
+      "Scalar.AspNetCore/2.17.14": {
+        "runtime": {
+          "lib/net9.0/Scalar.AspNetCore.dll": {
+            "assemblyVersion": "2.17.14.0",
+            "fileVersion": "2.17.14.0"
+          }
+        }
+      },
       "Sprache/2.3.1": {
         "dependencies": {
           "System.Globalization": "4.3.0",
@@ -1763,6 +1772,13 @@
       "sha512": "sha512-leXiwfiIkW7Gmn7cgnNcdtNAU70SjmKW3jxGj1iKHOvdn0zRWsgv/l2OJUO5zdGdiv2VRFnAsxxhDgMzofPdWg==",
       "path": "runtime.ubuntu.16.10-x64.runtime.native.system.security.cryptography.openssl/4.3.2",
       "hashPath": "runtime.ubuntu.16.10-x64.runtime.native.system.security.cryptography.openssl.4.3.2.nupkg.sha512"
+    },
+    "Scalar.AspNetCore/2.17.14": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-wkZQbMQPSgU1w9BciBCe2Gh7l8hI9mSe+B1FRGC6zbPE2cD7YH3BDxwKWGzlJwuXAxgbfzK4UzQTnTDIgP6XFw==",
+      "path": "scalar.aspnetcore/2.17.14",
+      "hashPath": "scalar.aspnetcore.2.17.14.nupkg.sha512"
     },
     "Sprache/2.3.1": {
       "type": "package",

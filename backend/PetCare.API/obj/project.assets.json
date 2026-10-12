@@ -995,6 +995,22 @@
           }
         }
       },
+      "Scalar.AspNetCore/2.17.14": {
+        "type": "package",
+        "compile": {
+          "lib/net9.0/Scalar.AspNetCore.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net9.0/Scalar.AspNetCore.dll": {
+            "related": ".xml"
+          }
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
+      },
       "Sprache/2.3.1": {
         "type": "package",
         "dependencies": {
@@ -4434,6 +4450,25 @@
         "runtime.ubuntu.16.10-x64.runtime.native.system.security.cryptography.openssl.4.3.2.nupkg.sha512",
         "runtime.ubuntu.16.10-x64.runtime.native.system.security.cryptography.openssl.nuspec",
         "runtimes/ubuntu.16.10-x64/native/System.Security.Cryptography.Native.OpenSsl.so"
+      ]
+    },
+    "Scalar.AspNetCore/2.17.14": {
+      "sha512": "wkZQbMQPSgU1w9BciBCe2Gh7l8hI9mSe+B1FRGC6zbPE2cD7YH3BDxwKWGzlJwuXAxgbfzK4UzQTnTDIgP6XFw==",
+      "type": "package",
+      "path": "scalar.aspnetcore/2.17.14",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "icon.png",
+        "lib/net10.0/Scalar.AspNetCore.dll",
+        "lib/net10.0/Scalar.AspNetCore.xml",
+        "lib/net8.0/Scalar.AspNetCore.dll",
+        "lib/net8.0/Scalar.AspNetCore.xml",
+        "lib/net9.0/Scalar.AspNetCore.dll",
+        "lib/net9.0/Scalar.AspNetCore.xml",
+        "scalar.aspnetcore.2.17.14.nupkg.sha512",
+        "scalar.aspnetcore.nuspec"
       ]
     },
     "Sprache/2.3.1": {
@@ -7895,6 +7930,7 @@
       "Microsoft.EntityFrameworkCore.Design >= 9.0.0",
       "Npgsql.EntityFrameworkCore.PostgreSQL >= 9.0.2",
       "PetCare.Infrastructure >= 1.0.0",
+      "Scalar.AspNetCore >= 2.17.14",
       "Swashbuckle.AspNetCore >= 7.2.0"
     ]
   },
@@ -7958,6 +7994,10 @@
           "Npgsql.EntityFrameworkCore.PostgreSQL": {
             "target": "Package",
             "version": "[9.0.2, )"
+          },
+          "Scalar.AspNetCore": {
+            "target": "Package",
+            "version": "[2.17.14, )"
           },
           "Swashbuckle.AspNetCore": {
             "target": "Package",

@@ -1,6 +1,15 @@
-@PetCare.API_HostAddress = http://localhost:5037
-
-GET {{PetCare.API_HostAddress}}/weatherforecast/
+### 1. Obtener todas las vacunas (Prueba del Verbo GET)
+# Nota: Ajusta el puerto 5037 si tu terminal indica otro puerto diferente
+GET http://localhost:5037/api/vacunas
 Accept: application/json
 
 ###
+
+### 2. Crear una nueva vacuna (Prueba del Verbo POST)
+POST http://localhost:5037/api/vacunas
+Content-Type: application/json
+
+{
+  "nombre": "Mórbillivirus Canino",
+  "especie": "Canino"
+}

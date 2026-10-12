@@ -1,40 +1,55 @@
+using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
-using PetCare.Application.Interfaces;
 using PetCare.Domain.Entities;
+using PetCare.Application.Features.Vacunas.DTOs;
+using PetCare.Infrastructure.Repositories;
 
 namespace PetCare.API.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class VacunasController : ControllerBase
-{
-    private readonly IVacunaRepository _repository;
+public class VacunasController : ControllerBase {
+    private readonly VacunaRepository _repository;
+    private readonly IValidator<CreateVacunaRequestDto> _validator;
 
-    public VacunasController(IVacunaRepository repository)
-    {
+    public VacunasController(VacunaRepository repository, IValidator<CreateVacunaRequestDto> validator) {
         _repository = repository;
+        _validator = validator;
     }
 
-    // VERBO GET: Solicitar lectura de datos (HTTP 200 OK)
     [HttpGet]
-    public async Task<IActionResult> GetVacunas()
-    {
+    public async Task<IActionResult> GetVacunas() {
         var vacunas = await _repository.GetAllAsync();
-        return Ok(vacunas);
+
+        var response = vacunas.Select(h => new VacunaResponseDto {
+            Id = h.Id,
+            Nombre = h.Nombre,
+            Especie = h.Especie
+        });
+
+        return Ok(response);
     }
 
-    // VERBO POST: Solicitar creación de un recurso
     [HttpPost]
-    public async Task<IActionResult> CrearVacuna([FromBody] VacunaGlobal vacuna)
-    {
-        if (string.IsNullOrWhiteSpace(vacuna.Nombre))
-        {
-            return BadRequest("El nombre de la vacuna es obligatorio."); // HTTP 400 Bad Request
+    public async Task<IActionResult> CrearVacuna([FromBody] CreateVacunaRequestDto request) {
+        var validationResult = await _validator.ValidateAsync(request);
+        if (!validationResult.IsValid) {
+            return BadRequest(validationResult.Errors);
         }
 
-        var nuevaVacuna = await _repository.AddAsync(vacuna);
+        var nuevaVacuna = new VacunaGlobal {
+            Nombre = request.Nombre,
+            Especie = request.Especie
+        };
 
-        // HTTP 201 Created: Devuelve el recurso recién creado por cortesía RESTful
-        return CreatedAtAction(nameof(GetVacunas), new { id = nuevaVacuna.Id }, nuevaVacuna);
+        var vacunaCreada = await _repository.AddAsync(nuevaVacuna);
+
+        var response = new VacunaResponseDto {
+            Id = vacunaCreada.Id,
+            Nombre = vacunaCreada.Nombre,
+            Especie = vacunaCreada.Especie
+        };
+
+        return CreatedAtAction(nameof(GetVacunas), new { id = response.Id }, response);
     }
 }

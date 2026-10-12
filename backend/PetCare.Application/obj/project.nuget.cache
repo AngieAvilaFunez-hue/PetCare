@@ -1,8 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "EnDyfUcf9hw=",
+  "dgSpecHash": "Ah1w/WNrtjg=",
   "success": true,
   "projectFilePath": "C:\\Users\\Angie Avila\\Desktop\\PetCare\\backend\\PetCare.Application\\PetCare.Application.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\Angie Avila\\.nuget\\packages\\fluentvalidation\\12.2.0\\fluentvalidation.12.2.0.nupkg.sha512",
+    "C:\\Users\\Angie Avila\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\12.2.0\\fluentvalidation.dependencyinjectionextensions.12.2.0.nupkg.sha512",
+    "C:\\Users\\Angie Avila\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\2.1.0\\microsoft.extensions.dependencyinjection.abstractions.2.1.0.nupkg.sha512"
+  ],
   "logs": []
 }

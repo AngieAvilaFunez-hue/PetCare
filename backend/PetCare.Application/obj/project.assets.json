@@ -1,11 +1,30 @@
 {
   "version": 3,
   "targets": {
-    "net9.0": {}
+    "net9.0": {
+      "PetCare.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v9.0",
+        "compile": {
+          "bin/placeholder/PetCare.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/PetCare.Domain.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "PetCare.Domain/1.0.0": {
+      "type": "project",
+      "path": "../PetCare.Domain/PetCare.Domain.csproj",
+      "msbuildProject": "../PetCare.Domain/PetCare.Domain.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    "net9.0": []
+    "net9.0": [
+      "PetCare.Domain >= 1.0.0"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\Angie Avila\\.nuget\\packages\\": {}
@@ -31,7 +50,11 @@
       "frameworks": {
         "net9.0": {
           "targetAlias": "net9.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\Angie Avila\\Desktop\\PetCare\\backend\\PetCare.Domain\\PetCare.Domain.csproj": {
+              "projectPath": "C:\\Users\\Angie Avila\\Desktop\\PetCare\\backend\\PetCare.Domain\\PetCare.Domain.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

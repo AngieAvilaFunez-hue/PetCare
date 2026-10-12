@@ -1,13 +1,15 @@
-using Microsoft.EntityFrameworkCore;
-using PetCare.Infrastructure.Data;
 using DotNetEnv;
+using PetCare.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
 Env.Load();
 
-builder.Services.AddDbContext<PetCareDbContext>(options =>
-    options.UseNpgsql(Environment.GetEnvironmentVariable("ConnectionStrings__PostgresConnection")));
+var connectionString = Environment.GetEnvironmentVariable("ConnectionStrings__PostgresConnection")
+    ?? throw new InvalidOperationException("Falta la cadena de conexión.");
+
+
+builder.Services.AddInfrastructure(connectionString);
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
@@ -21,7 +23,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI(c =>
     {
         c.SwaggerEndpoint("/swagger/v1/swagger.json", "PetCare API v1");
-        c.RoutePrefix = string.Empty; // Esto hace que Swagger abra directamente en http://localhost:5037/
+        c.RoutePrefix = string.Empty;
     });
 }
 
